@@ -1,1 +1,1 @@
-# WEB-course
+# WEB labs
