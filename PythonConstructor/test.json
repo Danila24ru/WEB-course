@@ -1,0 +1,24 @@
+{
+    "scene 3": {
+        "Images": {},
+        "Tests": {},
+        "Sounds": {},
+        "Videos": {}
+    },
+    "scene 2": {
+        "Images": {
+            "RightWall": "gameFiles/scene1/images/leftWall.png"
+        },
+        "Tests": {},
+        "Sounds": {},
+        "Videos": {}
+    },
+    "scene 1": {
+        "Images": {
+            "LeftWall": "gameFiles/scene1/images/leftWall.png"
+        },
+        "Tests": {},
+        "Sounds": {},
+        "Videos": {}
+    }
+}

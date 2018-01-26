@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>VR </title>
+
+	<meta name="description" content="Author email: danil.gabaidullin@gmail.com">
+	<meta name="author" content="Danila24ru">
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body style="background-color:rgba(240, 240, 241, 0.63)">
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div style="padding:20px !important" class="col-md-12">
+				<div style="background-color:rgba(79, 128, 225, 0.63) !important" class="jumbotron">
+					<h2 align="center">
+						Welcome to constructor VR - school
+						<br>
+						<img src="/images/logo.png"></img>
+					</h2>
+
+					<p align="center">
+						<a class="btn btn-primary btn-large" href="#">Start!</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div style="padding:20px !important" class="col-md-12">
+			<div style="background-color:rgba(79, 128, 225, 0.63) !important" class="jumbotron">
+				<div class="tabbable" id="tabs-754023">
+					<ul class="nav nav-tabs">
+						{% for scene in data.keys()|sort %}
+						<li>
+							<a href="#panel-{{loop.index}}" data-toggle="tab">{{scene}}</a>
+						</li>
+						{% endfor %}
+					</ul>
+					<div class="tab-content">
+						{% for scene in data.keys()|sort %}
+						{%set outer_loop = loop%}
+						<div class="tab-pane" id="panel-{{outer_loop.index}}">
+							<div class="panel-group" id="panel-{{outer_loop.index}}">
+								{% for tab in data[scene]|sort %}
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-{{outer_loop.index}}" href="#panel-element-{{loop.index}}">{{tab}}</a>
+									</div>
+
+						
+
+									<div id="panel-element-{{loop.index}}" class="panel-collapse collapse">
+										<div class="panel-body">
+											{%for x in data[scene][tab]|sort%}
+
+											
+											<!-- UPLOAD FILES -->
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<strong>Upload file : </strong>
+													<br>
+													Description: {{data[scene][tab][x]["Description"]}}
+													<br>
+													Image: {{x}} : PREVIEW (where it place in game)
+													<br>
+													<img src = "{{data[scene][tab][x]["PreviewImage"]}}" width="450" height="250"></img>
+													<img src = "{{data[scene][tab][x]["Image"]}}" width="450" height="250"></img>
+												</div>
+												<div class="panel-body">
+
+
+													<!-- UploadFOrm -->
+													<form action="upload_file" method="post" enctype="multipart/form-data">
+														<!-- COMPONENT START -->
+														<div class="form-group">
+															<div class="input-group input-file" name="Fichier1">
+																<input type=file name={{x}} class="form-control" placeholder='Choose a file...' />			
+																<span class="input-group-btn">
+																	<button class="btn btn-default btn-choose" type="submit">Submit</button>
+
+																</span>
+															</div>
+														</div>
+													</form>
+
+													<!-- Standar Form 
+													<form action="upload_file" method="post" enctype="multipart/form-data" id="js-upload-form">
+														<div class="form-inline">
+															<div class="form-group">
+																<input type=file name=file id="js-upload-files" multiple>
+															</div>
+															<button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload file</button>
+														</div>
+													</form>-->
+												</div>
+											</div>
+											<!--UPLOAD FILES-->
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
+
+</html>
